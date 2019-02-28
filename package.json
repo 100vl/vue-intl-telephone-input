@@ -11,7 +11,7 @@
     "vue",
     "intl-tel-input"
   ],
-  "author": "royal-mar@hotmail.com",
+  "author": "ZiJie-Li <royal-mar@hotmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ZiJie-Li/vue2-intl-tel-input/issues"
@@ -19,5 +19,9 @@
   "homepage": "https://github.com/ZiJie-Li/vue2-intl-tel-input#readme",
   "dependencies": {
     "libphonenumber-js": "^1.7.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
