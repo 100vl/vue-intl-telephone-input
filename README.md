@@ -75,9 +75,9 @@ Vue component for input international telephone numbers and validating.
   | `options.separateDialCode` | `Boolean` | `false` | Set use separate |
   | `options.customCss` | `String` | `''` | Set custom css name |
   | `options.input` | `Object` | | Set input attribute |
-  | `options.required` | `Boolean` | `Boolean` | Required property for HTML5 required attribute |
-  | `options.readonly` | `Boolean` | `Boolean` | Set readonly attribute |
-  | `options.placeholder` | `String` | `''` | Set placeholder attribute |
+  | `options.input.required` | `Boolean` | `Boolean` | Required property for HTML5 required attribute |
+  | `options.input.readonly` | `Boolean` | `Boolean` | Set readonly attribute |
+  | `options.input.placeholder` | `String` | `''` | Set placeholder attribute |
 
 
 ### Events
