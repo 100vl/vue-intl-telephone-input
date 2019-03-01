@@ -1,6 +1,12 @@
 # vue-intl-telephone-input
 Vue component for input international telephone numbers and validating.
 
+Demo [Demo pages](http://zijie-li.github.io/vue-intl-telephone-input/).
+
+<p>
+<img width="400px" src="https://i.imgur.com/8thaAbv.png"/>
+</p>
+
 ## Installation
 - **yarn**:
   ```bash
