@@ -1,6 +1,6 @@
 {
   "name": "vue-intl-telephone-input",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Vue component for input international telephone numbers and validating.",
   "main": "index.js",
   "repository": {

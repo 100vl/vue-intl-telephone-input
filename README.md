@@ -53,7 +53,7 @@ Vue component for input international telephone numbers and validating.
   </template>
 
   <script>
-  import IntlTelInput from 'vue2-intl-tel-input';
+  import IntlTelInput from 'vue-intl-telephone-input';
 
   export default {
     name: 'Home',
@@ -84,5 +84,5 @@ Vue component for input international telephone numbers and validating.
 
   | Property value | Arguments | Description |
   | -------------- | --------- | ----------- |
-  | `validateSuccess` | `Object` | Fires when the input changes on validate success with the argument is the object includes `{ number, country }` |
+  | `validateSuccess` | `Object` | Fires when the input changes on validate success with the argument is the object includes `{ number, countryCode }` |
   | `validateError` | | Fires when the input changes on validate error |
