@@ -1,20 +1,20 @@
-# vue2-intl-tel-input
+# vue-intl-telephone-input
 Vue component for input international telephone numbers and validating.
 
 ## Installation
 - **yarn**:
   ```bash
-    yarn add vue2-intl-tel-input
+    yarn add vue-intl-telephone-input
   ```
 - **npm**:
   ```bash
-    npm i --save vue2-intl-tel-input
+    npm i --save vue-intl-telephone-input
   ```
 
 ## Usage
 - Install as a global component:
     ```javascript
-    import IntlTelInput from 'vue2-intl-tel-input';
+    import IntlTelInput from 'vue-intl-telephone-input';
 
     Vue.component('intl-tel-input', IntlTelInput);
     ```

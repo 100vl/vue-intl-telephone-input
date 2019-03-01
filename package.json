@@ -1,22 +1,23 @@
 {
-  "name": "vue2-intl-tel-input",
-  "version": "1.0.0",
+  "name": "vue-intl-telephone-input",
+  "version": "1.0.1",
   "description": "Vue component for input international telephone numbers and validating.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZiJie-Li/vue2-intl-tel-input.git"
+    "url": "git+https://github.com/ZiJie-Li/vue-intl-telephone-input.git"
   },
   "keywords": [
     "vue",
+    "intl-tel-input",
     "intl-tel-input"
   ],
   "author": "ZiJie-Li <royal-mar@hotmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ZiJie-Li/vue2-intl-tel-input/issues"
+    "url": "https://github.com/ZiJie-Li/vue-intl-telephone-input/issues"
   },
-  "homepage": "https://github.com/ZiJie-Li/vue2-intl-tel-input#readme",
+  "homepage": "https://github.com/ZiJie-Li/vue-intl-telephone-input#readme",
   "dependencies": {
     "libphonenumber-js": "^1.7.8"
   },
