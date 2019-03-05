@@ -1,6 +1,6 @@
 {
   "name": "vue-intl-telephone-input",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vue component for input international telephone numbers and validating.",
   "main": "index.js",
   "repository": {
@@ -10,7 +10,10 @@
   "keywords": [
     "vue",
     "intl-tel-input",
-    "intl-tel-input"
+    "intl-telephone-input",
+    "intl-telephone",
+    "mobile",
+    "international telephone numbers"
   ],
   "author": "ZiJie-Li <royal-mar@hotmail.com>",
   "license": "ISC",

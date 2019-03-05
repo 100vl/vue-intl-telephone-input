@@ -1,5 +1,5 @@
 <template>
-  <div class="intl-tel-input" :class="initOptions.customCss">
+  <div class="intl-tel-input" :class="currentOptions.className">
     <div class="conutry-list" :class="{ active: (!currentOptions.input.readonly & showConutryList) }">
       <div class="search-wrapper">
         <input type="text" class="search-input" v-model="searchValue" @keyup="onSearch">
@@ -24,7 +24,7 @@
       <span class="conutry-code">+{{ currentCountry.dialCode }}</span>
     </div>
     <div class="input-wrapper" :class="(this.validatorMode) ? (this.validatorStatus) ? 'success' : 'error' : ''">
-      <input type="tel" class="tel-input" autocomplete="off" :placeholder="initOptions.input.placeholder || currentCountry.phoneFormat" :required="initOptions.input.required" :readonly="initOptions.input.readonly" v-model="modelValue" @keyup="validatorCellphone" autofocus>
+      <input type="tel" class="tel-input" autocomplete="off" :placeholder="currentOptions.input.placeholder || currentCountry.phoneFormat" :required="currentOptions.input.required" :readonly="currentOptions.input.readonly" v-model="modelValue" @keyup="validatorCellphone" autofocus>
     </div>
   </div>
 </template>
@@ -62,7 +62,7 @@ export default {
       countries: Object.values(countries).flat(),
       initOptions: {
         separateDialCode: false,
-        customCss: '',
+        className: '',
         input: {
           required: false,
           readonly: false,
