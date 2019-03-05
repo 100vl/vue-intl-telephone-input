@@ -80,9 +80,10 @@ Vue component for input international telephone numbers and validating.
   | `options` | `Object` | `{}` | Custom Options |
   | `options.className` | `String` | `''` | Set custom css class name |
   | `options.input` | `Object` | | Set input attribute |
-  | `options.input.required` | `Boolean` | `Boolean` | Required property for HTML5 required attribute |
-  | `options.input.readonly` | `Boolean` | `Boolean` | Set readonly attribute |
+  | `options.input.required` | `Boolean` | `false` | Required property for HTML5 required attribute |
+  | `options.input.readonly` | `Boolean` | `false` | Set readonly attribute |
   | `options.input.placeholder` | `String` | `''` | Set placeholder attribute |
+
 
 
   | 參數 | 型態 | 預設值 | 描述 |
@@ -93,8 +94,8 @@ Vue component for input international telephone numbers and validating.
   | `options` | `Object` | `{}` | 客制選項 |
   | `options.className` | `String` | `''` | 設置客制 css class 名稱 |
   | `options.input` | `Object` | | 設定 input 的屬性 |
-  | `options.input.required` | `Boolean` | `Boolean` | 是否為必填 |
-  | `options.input.readonly` | `Boolean` | `Boolean` | 是否為不能更改 |
+  | `options.input.required` | `Boolean` | `false` | 是否為必填 |
+  | `options.input.readonly` | `Boolean` | `false` | 是否為不能更改 |
   | `options.input.placeholder` | `String` | `''` | 設定預設顯示字串 |
 
 ### Events
@@ -103,6 +104,7 @@ Vue component for input international telephone numbers and validating.
   | -------------- | --------- | ----------- |
   | `validateSuccess` | `Object` | Fires when the input changes on validate success with the argument is the object includes `{ number, countryCode }` |
   | `validateError` | | Fires when the input changes on validate error |
+
 
 
   | 事件名稱 | 參數型別 | 描述 |
@@ -116,27 +118,27 @@ Vue component for input international telephone numbers and validating.
 - you can set `options.className` :
 
   ```js
-    <template>
-    ...
-      <intl-tel-input :options="otipns"></intl-tel-input>
-    ...
-    <template>
-    <script>
-     export default {
-       data() {
-         return {
-           otipns: {
-              className: 'my-style'
-            }
-         };
-       }
-     }
-    </script>
-    <style>
-      .intl-tel-input.my-style .conutry-list .category-box .category-box-header {
-        background-color: #3f51b5;
+  <template>
+  ...
+    <intl-tel-input :options="otipns"></intl-tel-input>
+  ...
+  <template>
+  <script>
+    export default {
+      data() {
+        return {
+          otipns: {
+            className: 'my-style'
+          }
+        };
       }
-    </style>
+    }
+  </script>
+  <style>
+    .intl-tel-input.my-style .conutry-list .category-box .category-box-header {
+      background-color: #3f51b5;
+    }
+  </style>
   ```
 
 
