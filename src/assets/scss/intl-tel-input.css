@@ -16,20 +16,11 @@
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
   opacity: 0;
-  z-index: -1;
-  -ms-transform: translateY(-42px);
-  -webkit-transform: translateY(-42px);
-  transform: translateY(-42px);
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  z-index: -1;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
 }
 .intl-tel-input .conutry-list.active {
   opacity: 1;
-  -ms-transform: translateY(0);
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-  z-index: 0;
 }
 .intl-tel-input .conutry-list .search-wrapper {
   padding: 10px;
@@ -148,10 +139,10 @@
   font-size: 1rem;
 }
 .intl-tel-input .input-wrapper.error:after {
-  content: "✖";
+  content: "\2716";
   color: #ff5722;
 }
 .intl-tel-input .input-wrapper.success:after {
-  content: "✔";
+  content: "\2714";
   color: #4caf50;
 }

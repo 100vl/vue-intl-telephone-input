@@ -1,18 +1,22 @@
 <template>
   <div class="intl-tel-input" :class="currentOptions.className">
-    <div class="conutry-list" :class="{ active: (!currentOptions.input.readonly & showConutryList) }">
+    <div
+      class="conutry-list"
+      :class="{ active: (!currentOptions.input.readonly & showConutryList) }"
+    >
       <div class="search-wrapper">
         <input type="text" class="search-input" v-model="searchValue" @keyup="onSearch">
       </div>
       <div class="conutry-category">
-        <div
-          class="category-box"
-          v-for="(group, alphabet) in countriesGroups"
-          :key="alphabet"
-        >
+        <div class="category-box" v-for="(group, alphabet) in countriesGroups" :key="alphabet">
           <div class="category-box-header">{{ alphabet }}</div>
           <ul class="list">
-            <li class="category-box-item" v-for="country in group" :key="country.code" @click="onSelectCountry(country.code)">
+            <li
+              class="category-box-item"
+              v-for="country in group"
+              :key="country.code"
+              @click="onSelectCountry(country.code)"
+            >
               <span class="item-conutry-name">{{ country.name }}</span>
               <span class="item-conutry-code">+{{ country.dialCode }}</span>
             </li>
@@ -23,15 +27,28 @@
     <div class="select-conutry" @click="showConutryList = !showConutryList">
       <span class="conutry-code">+{{ currentCountry.dialCode }}</span>
     </div>
-    <div class="input-wrapper" :class="(this.validatorMode) ? (this.validatorStatus) ? 'success' : 'error' : ''">
-      <input type="tel" class="tel-input" autocomplete="off" :placeholder="currentOptions.input.placeholder || currentCountry.phoneFormat" :required="currentOptions.input.required" :readonly="currentOptions.input.readonly" v-model="modelValue" @keyup="validatorCellphone" autofocus>
+    <div
+      class="input-wrapper"
+      :class="(this.validatorMode) ? (this.validatorStatus) ? 'success' : 'error' : ''"
+    >
+      <input
+        type="tel"
+        class="tel-input"
+        autocomplete="off"
+        :placeholder="currentOptions.input.placeholder || currentCountry.phoneFormat"
+        :required="currentOptions.input.required"
+        :readonly="currentOptions.input.readonly"
+        v-model="modelValue"
+        @keyup="validatorCellphone"
+        autofocus
+      >
     </div>
   </div>
 </template>
 
 <script>
 import countries from "./assets/countries.json";
-import { parse, format, getNumberType, isValidNumber } from './assets/validate';
+import { parse, format, getNumberType, isValidNumber } from "./assets/validate";
 import "./assets/scss/intl-tel-input.css";
 
 export default {
@@ -45,15 +62,15 @@ export default {
     },
     countryCode: {
       type: String,
-      default: 'tw'
+      default: "tw"
     },
     dialCode: {
       type: String,
-      default: ''
+      default: ""
     },
     value: {
       type: String,
-      default: ''
+      default: ""
     }
   },
   data() {
@@ -62,17 +79,17 @@ export default {
       countries: Object.values(countries).flat(),
       initOptions: {
         separateDialCode: false,
-        className: '',
+        className: "",
         input: {
           required: false,
           readonly: false,
-          placeholder: ''
+          placeholder: ""
         }
       },
       currentCountryCode: this.countryCode,
       currentDialCode: this.dialCode,
       modelValue: this.value,
-      searchValue: '',
+      searchValue: "",
       showConutryList: false,
       validatorMode: false,
       validatorStatus: false
@@ -85,6 +102,9 @@ export default {
     currentCountry() {
       const countryCode = this.currentCountryCode.toLowerCase();
       return this.countries.find(c => c.code === countryCode);
+    },
+    searchRegExp() {
+      return new RegExp(this.searchValue.toLowerCase(), "gi");
     }
   },
   mounted() {
@@ -98,76 +118,76 @@ export default {
         return;
       }
 
-      // is number
-      if (!isNaN(Number(this.searchValue))) {
-        const initCountries = this.countries;
-        let countryCopie = [];
+      const initCountries = this.countries;
+      let countryCopie = [];
 
-        const newCounties = initCountries.filter((country) => {
-          return (country.dialCode.toString().search(this.searchValue) !== -1);
-        });
+      const newCounties = initCountries.filter(country => {
+        return (
+          country.name.toLowerCase().search(this.searchRegExp) !== -1 ||
+          country.dialCode.toString().search(this.searchRegExp) !== -1
+        );
+      });
 
-        newCounties.forEach((country) => {
-          let char = country.name.substr(0, 1).toUpperCase();
-          if (countryCopie[char] === undefined) countryCopie[char] = [];
-          countryCopie[char].push(country);
-        });
+      newCounties.map(country => {
+        let char = country.name.substr(0, 1).toUpperCase();
+        if (countryCopie[char] === undefined) countryCopie[char] = [];
+        countryCopie[char].push(country);
+      });
 
-        this.countriesGroups = { ...countryCopie };
-      }
-      else {
-        const countryCopie = { ...countries };
-
-        let key = this.searchValue.substr(0, 1).toUpperCase();
-
-        Object.keys(countryCopie).map((code) => {
-          if (code !== key) delete countryCopie[code];
-        });
-
-        if (this.searchValue.length > 1) {
-          countryCopie[key] = countryCopie[key].filter((country) => {
-            return (country.name.toLowerCase().search(this.searchValue.toLowerCase()) !== -1);
-          });
-        }
-
-        this.countriesGroups = countryCopie;
-      }
+      this.countriesGroups = { ...countryCopie };
     },
     onSelectCountry(code) {
       this.currentCountryCode = code;
-      this.modelValue = '';
+      this.modelValue = "";
       this.validatorCellphone();
     },
     validatorCellphone() {
       this.validatorMode = true;
-      this.validatorStatus = ((this._getNumberType() === 'MOBILE' || this._getNumberType() === 'FIXED_LINE_OR_MOBILE') && this._isValidNumber());
+      this.validatorStatus =
+        (this._getNumberType() === "MOBILE" ||
+          this._getNumberType() === "FIXED_LINE_OR_MOBILE") &&
+        this._isValidNumber();
 
       if (this.validatorStatus) {
-        this.$emit('validateSuccess', { number: this._getNumber(), countryCode: this.currentCountryCode });
-      }
-      else {
-        this.$emit('validateError');
+        this.$emit("validateSuccess", {
+          number: this._getNumber(),
+          countryCode: this.currentCountryCode
+        });
+      } else {
+        this.$emit("validateError");
       }
     },
     _getNumber() {
-      return format(this._getFullNumber(), this.currentCountryCode.toUpperCase(), 'International');
+      return format(
+        this._getFullNumber(),
+        this.currentCountryCode.toUpperCase(),
+        "International"
+      );
     },
     _getFullNumber() {
       let val = this.modelValue,
         dialCode = this.currentCountry.dialCode.toString(),
         prefix;
       if (this.currentOptions.separateDialCode) {
-        prefix = '+' + dialCode;
-      } else if (dialCode && dialCode.charAt(0) == '1' && dialCode.length == 4 && dialCode.substr(1) != val.substr(0, 3)) {
+        prefix = "+" + dialCode;
+      } else if (
+        dialCode &&
+        dialCode.charAt(0) == "1" &&
+        dialCode.length == 4 &&
+        dialCode.substr(1) != val.substr(0, 3)
+      ) {
         prefix = dialCode.substr(1);
       } else {
-        prefix = '';
+        prefix = "";
       }
       return prefix + val;
     },
     _getNumberType() {
       try {
-        let parsePhone = parse(this._getFullNumber(), this.currentCountry.code.toUpperCase());
+        let parsePhone = parse(
+          this._getFullNumber(),
+          this.currentCountry.code.toUpperCase()
+        );
         return getNumberType(parsePhone.phone, parsePhone.country);
       } catch (error) {
         return -1;
@@ -181,7 +201,7 @@ export default {
       }
 
       return false;
-    },
+    }
   }
 };
 </script>
